@@ -8,7 +8,7 @@ module Tnef
 
   def self.unpack(winmail_io, &block)
     in_tmp_dir do |dir|
-      IO.popen("#{Tnef::Executable.path} --number-backups --save-body --body-pref th -K", "wb") do |tnef|
+      IO.popen("#{Tnef::Executable.path} --number-backups --save-body --body-pref th -K --debug", "wb") do |tnef|
         tnef.write(winmail_io.read)
         tnef.close
       end
